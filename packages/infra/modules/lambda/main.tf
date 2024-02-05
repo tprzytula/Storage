@@ -13,8 +13,8 @@ resource "aws_lambda_function" "lambda_functions" {
   role             = aws_iam_role.lambda_roles[each.key].arn
   handler          = "index.handler"
   source_code_hash = filebase64sha256(format("%s/%s/%s.zip", local.lambda_build_output_directory, each.key, each.key))
-  runtime          = "nodejs16.x"
-  memory_size      = "128"
+  runtime          = "nodejs20.x"
+  memory_size      = "512"
   publish          = true
   timeout          = 5
 }
