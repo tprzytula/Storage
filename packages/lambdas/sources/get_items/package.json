@@ -3,9 +3,6 @@
   "name": "get_items",
   "version": "1.0.0",
   "license": "MIT",
-  "scripts": {
-    "build": "serverless package --package ../../build/get_items"
-  },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.186.0"
   },

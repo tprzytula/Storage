@@ -1,9 +1,0 @@
-service: "update_item"
-plugins:
-  - serverless-externals-plugin
-  - serverless-plugin-monorepo
-provider:
-  name: aws
-functions:
-  update_item:
-    handler: index.handler

@@ -1,6 +1,6 @@
 locals {
   lambda_root_directory = "../lambdas"
-  lambda_build_output_directory = format("%s/build", local.lambda_root_directory)
+  lambda_build_output_directory = format("%s/dist", local.lambda_root_directory)
   lambda_source_directory = format("%s/sources", local.lambda_root_directory)
 
   lambda_functions = {

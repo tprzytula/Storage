@@ -3,9 +3,6 @@
   "name": "delete_item",
   "version": "1.0.0",
   "license": "MIT",
-  "scripts": {
-    "build": "serverless package --package ../../build/delete_item"
-  },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.186.0"
   },
