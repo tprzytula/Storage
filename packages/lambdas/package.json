@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "workspaces": [
+    "sources/*",
+    "libs/*",
+    "configs/*"
+  ],
+  "scripts": {
+    "prepare": "lerna bootstrap",
+    "build": "lerna run build"
+  },
+  "dependencies": {
+    "lerna": "^6.6.2"
+  }
+}

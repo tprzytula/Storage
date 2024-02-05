@@ -1,0 +1,9 @@
+service: "delete_item"
+plugins:
+  - serverless-externals-plugin
+  - serverless-plugin-monorepo
+provider:
+  name: aws
+functions:
+  delete_item:
+    handler: index.handler

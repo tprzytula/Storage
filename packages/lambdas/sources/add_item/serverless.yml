@@ -1,0 +1,9 @@
+service: "add_item"
+plugins:
+  - serverless-externals-plugin
+  - serverless-plugin-monorepo
+provider:
+  name: aws
+functions:
+  add_item:
+    handler: index.handler

@@ -1,0 +1,20 @@
+{
+  "name": "Storage Manager",
+  "short_name": "StorageManager",
+  "start_url": "http://storage-manager-nkhme3rl4r.s3-website.eu-west-2.amazonaws.com",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Storage Manager allows you to manage your storage.",
+  "icons": [
+    {
+      "src": "src/icons/icons8/icons8-product-80.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "src/icons/icons8/icons8-product-80.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ]
+}

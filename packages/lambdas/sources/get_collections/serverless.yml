@@ -1,0 +1,9 @@
+service: "get_collections"
+plugins:
+  - serverless-externals-plugin
+  - serverless-plugin-monorepo
+provider:
+  name: aws
+functions:
+  get_collections:
+    handler: index.handler
