@@ -1,4 +1,6 @@
-const { DynamoDBClient, ScanCommand } = require("@aws-sdk/client-dynamodb");
+import { Context, APIGatewayProxyResult, APIGatewayEvent } from "aws-lambda";
+import { DynamoDBClient, ScanCommand } from "@aws-sdk/client-dynamodb";
+
 const client = new DynamoDBClient({ region: "eu-west-2" });
 
 const getCollections = async () => {
@@ -11,12 +13,15 @@ const getCollections = async () => {
   });
 
   const { Items } = (await client.send(command)) ?? {};
-  const parsed = Items.map(({ collection }) => collection.S);
+  const parsed = (Items as any).map(({ collection }) => collection.S);
 
   return [...new Set(parsed)];
 };
 
-exports.handler = async (event, _context) => {
+export const handler = async (
+  event: APIGatewayEvent,
+  _context: Context
+): Promise<APIGatewayProxyResult> => {
   console.info("Event received", event);
 
   try {
@@ -34,6 +39,6 @@ exports.handler = async (event, _context) => {
   } catch (error) {
     console.log("Encountered error:", error);
 
-    return { statusCode: 500 };
+    return { body: "Internal Server Error", statusCode: 500 };
   }
 };
