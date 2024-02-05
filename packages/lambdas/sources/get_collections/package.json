@@ -3,13 +3,10 @@
   "name": "get_collections",
   "version": "1.0.0",
   "license": "MIT",
-  "scripts": {
-    "build": "serverless package --package ../../build/get_collections"
-  },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.186.0"
+    "@aws-sdk/client-dynamodb": "^3.507.0"
   },
   "devDependencies": {
-    "@chat/serverless-config": "1.0.0"
+    "@types/aws-lambda": "^8.10.133"
   }
 }

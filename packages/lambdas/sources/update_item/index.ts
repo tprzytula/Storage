@@ -1,8 +1,10 @@
-const {
+import { Context, APIGatewayProxyResult, APIGatewayEvent } from "aws-lambda";
+import {
   DynamoDBClient,
   UpdateItemCommand,
   GetItemCommand,
-} = require("@aws-sdk/client-dynamodb");
+} from "@aws-sdk/client-dynamodb";
+
 const client = new DynamoDBClient({ region: "eu-west-2" });
 
 const updateItem = async ({ id, name, quantity, form, icon, collection }) => {
@@ -43,7 +45,7 @@ const getItem = async (id) => {
 
   const { Item } = await client.send(command);
 
-  return parseItem(Item);
+  return parseItem(Item as any);
 };
 
 const parseItem = ({ quantity, form, id, name, icon, collection }) => {
@@ -57,11 +59,14 @@ const parseItem = ({ quantity, form, id, name, icon, collection }) => {
   };
 };
 
-exports.handler = async (event, _context) => {
+export const handler = async (
+  event: APIGatewayEvent,
+  _context: Context
+): Promise<APIGatewayProxyResult> => {
   console.info("Event received", event);
 
-  const { id, collection } = event.pathParameters;
-  const { name, quantity, form, icon } = JSON.parse(event.body);
+  const { id, collection } = event.pathParameters ?? {};
+  const { name, quantity, form, icon } = JSON.parse(event.body ?? "");
 
   try {
     await updateItem({ id, name, quantity, form, icon, collection });
@@ -80,6 +85,6 @@ exports.handler = async (event, _context) => {
   } catch (error) {
     console.log("Encountered error:", error);
 
-    return { statusCode: 500 };
+    return { body: "Internal Server Error", statusCode: 500 };
   }
 };
