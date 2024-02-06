@@ -1,10 +1,10 @@
 resource "aws_api_gateway_rest_api" "rest_api" {
   name = "storage-rest-api"
   body = templatefile("${path.module}/policies/storage.yml", {
-    add_item = var.lambda_functions["add_item"].invoke_arn,
-    get_items = var.lambda_functions["get_items"].invoke_arn
-    delete_item = var.lambda_functions["delete_item"].invoke_arn
-    update_item = var.lambda_functions["update_item"].invoke_arn
+    add_item        = var.lambda_functions["add_item"].invoke_arn,
+    get_items       = var.lambda_functions["get_items"].invoke_arn
+    delete_item     = var.lambda_functions["delete_item"].invoke_arn
+    update_item     = var.lambda_functions["update_item"].invoke_arn
     get_collections = var.lambda_functions["get_collections"].invoke_arn
   })
 
