@@ -9,7 +9,12 @@ variable "dynamodb_items_arn" {
 
 variable "lambda_functions" {
   type = map(object({
-    iam_role_name : string
+    function_name = string
+    invoke_arn    = string
+    iam_role_name = string
+    permissions = object({
+      database = string
+    })
   }))
 }
 

@@ -16,10 +16,10 @@ resource "aws_dynamodb_table" "items" {
   }
 
   global_secondary_index {
-    name               = "CollectionIndex"
-    hash_key           = "collection"
-    write_capacity     = 1
-    read_capacity      = 1
-    projection_type    = "ALL"
+    name            = "CollectionIndex"
+    hash_key        = "collection"
+    write_capacity  = 1
+    read_capacity   = 1
+    projection_type = "ALL"
   }
 }
