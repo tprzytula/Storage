@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.507.0"
+    "@aws-sdk/client-dynamodb": "^3.507.0",
+    "@storage-lambda-common/database": "1.0.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.133"

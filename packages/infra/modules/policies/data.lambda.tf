@@ -14,6 +14,19 @@ data "aws_iam_policy_document" "lambda_policies" {
     ]
   }
 
+  statement {
+    sid = "EC2NetworkInterfaceManagement"
+    actions = [
+      "ec2:CreateNetworkInterface",
+      "ec2:DescribeNetworkInterfaces",
+      "ec2:DeleteNetworkInterface"
+    ]
+    effect = "Allow"
+    resources = [
+      "*"
+    ]
+  }
+
   dynamic "statement" {
     for_each = each.value.permissions.database == "read-only" ? [each.key] : []
 
@@ -45,6 +58,21 @@ data "aws_iam_policy_document" "lambda_policies" {
       effect = "Allow"
       resources = [
         var.dynamodb_items_arn
+      ]
+    }
+  }
+
+  dynamic "statement" {
+    for_each = each.value.permissions.rds == "connect" ? [each.key] : []
+
+    content {
+      sid = "DatabaseConnect"
+      actions = [
+        "rds-db:connect",
+      ]
+      effect = "Allow"
+      resources = [
+        format("arn:aws:rds-db:%s:%s:dbuser:*/*", data.aws_region.current.name, data.aws_caller_identity.current.account_id)
       ]
     }
   }

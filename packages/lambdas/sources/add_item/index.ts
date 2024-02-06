@@ -1,10 +1,26 @@
 import { randomUUID } from "crypto";
 import { Context, APIGatewayProxyResult, APIGatewayEvent } from "aws-lambda";
 import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
+import { callProcedure } from "@storage-lambda-common/database";
 
 const client = new DynamoDBClient({ region: "eu-west-2" });
 
-const addItem = async ({ name, quantity, form, icon, collection }) => {
+const addItemMysql = async ({ name, quantity, form, icon, collection }) => {
+  try {
+    await callProcedure(
+      "AddItemToCollection",
+      name,
+      form,
+      quantity,
+      collection,
+      icon
+    );
+  } catch (error) {
+    console.error("addItemMysql error", error);
+  }
+};
+
+const addItemDynamoDB = async ({ name, quantity, form, icon, collection }) => {
   const id = randomUUID();
   const command = new PutItemCommand({
     TableName: "items",
@@ -53,7 +69,14 @@ export const handler = async (
   );
 
   try {
-    const addedItem = await addItem({ name, quantity, form, icon, collection });
+    addItemMysql({ name, quantity, form, icon, collection });
+    const addedItem = await addItemDynamoDB({
+      name,
+      quantity,
+      form,
+      icon,
+      collection,
+    });
 
     return {
       statusCode: 201,
