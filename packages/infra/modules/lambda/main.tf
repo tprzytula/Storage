@@ -17,5 +17,12 @@ resource "aws_lambda_function" "lambda_functions" {
   memory_size      = "512"
   publish          = true
   timeout          = 5
+
+  dynamic "environment" {
+    for_each = length(keys(each.value.environment_variables)) > 0 ? [each.value.environment_variables] : []
+    content {
+      variables = environment.value
+    }
+  }
 }
 

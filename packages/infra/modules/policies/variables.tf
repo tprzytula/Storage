@@ -14,6 +14,7 @@ variable "lambda_functions" {
     iam_role_name = string
     permissions = object({
       database = string
+      rds      = string
     })
   }))
 }
