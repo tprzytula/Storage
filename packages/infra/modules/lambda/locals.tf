@@ -1,7 +1,5 @@
 locals {
-  lambda_root_directory         = "../lambdas"
-  lambda_build_output_directory = format("%s/dist", local.lambda_root_directory)
-  lambda_source_directory       = format("%s/sources", local.lambda_root_directory)
+  s3_bucket_name = format("storage-manager-lambdas-%s", var.random_name)
 
   lambda_functions = {
     "add_item" = {
