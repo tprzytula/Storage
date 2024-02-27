@@ -1,9 +1,9 @@
 terraform {
   backend "remote" {
-   hostname = "app.terraform.io"
-   organization = "tprzytula"
-   workspaces {
-    name = "Storage"
-   }
+    hostname     = "app.terraform.io"
+    organization = "tprzytula"
+    workspaces {
+      name = "Storage"
+    }
   }
 }

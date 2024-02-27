@@ -31,3 +31,13 @@ resource "aws_iam_role_policy_attachment" "s3_storage_manager_put_acl_policy_rol
   role       = aws_iam_role.web_identity_github_role.name
   policy_arn = aws_iam_policy.s3_storage_manager_put_acl_policy.arn
 }
+
+resource "aws_iam_policy" "s3_storage_manager_lambdas_put_acl_policy" {
+  name   = format("s3_storage_manager_put_acl_policy_%s", var.random_name)
+  policy = data.aws_iam_policy_document.s3_storage_manager_lambdas_put_acl.json
+}
+
+resource "aws_iam_role_policy_attachment" "s3_storage_manager_lambdas_put_acl_policy_role_attachment" {
+  role       = aws_iam_role.web_identity_github_role.name
+  policy_arn = aws_iam_policy.s3_storage_manager_lambdas_put_acl_policy.arn
+}
