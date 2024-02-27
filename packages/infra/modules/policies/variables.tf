@@ -22,3 +22,7 @@ variable "lambda_functions" {
 variable "s3_storage_manager_arn" {
   type = string
 }
+
+variable "s3_storage_manager_lambdas_arn" {
+  type = string
+}
