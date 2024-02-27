@@ -33,7 +33,7 @@ resource "aws_iam_role_policy_attachment" "s3_storage_manager_put_acl_policy_rol
 }
 
 resource "aws_iam_policy" "s3_storage_manager_lambdas_put_acl_policy" {
-  name   = format("s3_storage_manager_put_acl_policy_%s", var.random_name)
+  name   = format("s3_storage_manager_lambdas_put_acl_policy_%s", var.random_name)
   policy = data.aws_iam_policy_document.s3_storage_manager_lambdas_put_acl.json
 }
 
