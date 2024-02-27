@@ -1,4 +1,4 @@
-name: Publish Website
+name: Publish Lambdas
 on:
   push:
     branches:
