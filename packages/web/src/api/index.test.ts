@@ -26,7 +26,7 @@ describe('Given the retrieveItems function', () => {
     await retrieveItems('storage')
 
     expect(fetchMock).toHaveBeenCalledWith(
-      'https://4047ilhsk4.execute-api.eu-west-2.amazonaws.com/v1/collections/storage/items'
+      'https://haazapce58.execute-api.eu-west-2.amazonaws.com/v1/collections/storage/items'
     )
   })
 
@@ -53,7 +53,7 @@ describe('Given the addItem function', () => {
     await addItem(exampleItem, 'storage')
 
     expect(fetchMock).toHaveBeenCalledWith(
-      'https://4047ilhsk4.execute-api.eu-west-2.amazonaws.com/v1/collections/storage/items',
+      'https://haazapce58.execute-api.eu-west-2.amazonaws.com/v1/collections/storage/items',
       {
         method: 'PUT',
         body: JSON.stringify(exampleItem),
@@ -75,7 +75,7 @@ describe('Given the deleteItem function', () => {
     await deleteItem('1', 'storage')
 
     expect(fetchMock).toHaveBeenCalledWith(
-      'https://4047ilhsk4.execute-api.eu-west-2.amazonaws.com/v1/collections/storage/items/1',
+      'https://haazapce58.execute-api.eu-west-2.amazonaws.com/v1/collections/storage/items/1',
       {
         method: 'DELETE',
       }
@@ -104,7 +104,7 @@ describe('Given the updateItem function', () => {
     await updateItem(exampleItem, 'storage')
 
     expect(fetchMock).toHaveBeenCalledWith(
-      'https://4047ilhsk4.execute-api.eu-west-2.amazonaws.com/v1/collections/storage/items/2',
+      'https://haazapce58.execute-api.eu-west-2.amazonaws.com/v1/collections/storage/items/2',
       {
         method: 'POST',
         body: JSON.stringify(exampleItem),

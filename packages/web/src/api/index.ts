@@ -1,6 +1,6 @@
 import { StorageItem } from '../state/types'
 
-const API_BASE_URL = 'https://4047ilhsk4.execute-api.eu-west-2.amazonaws.com/v1'
+const API_BASE_URL = 'https://haazapce58.execute-api.eu-west-2.amazonaws.com/v1'
 
 export const retrieveItems = async (collection: string) => {
   const response = await fetch(
