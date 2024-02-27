@@ -72,7 +72,7 @@ data "aws_iam_policy_document" "lambda_policies" {
       ]
       effect = "Allow"
       resources = [
-        format("arn:aws:rds-db:%s:%s:dbuser:*/*", data.aws_region.current.name, data.aws_caller_identity.current.account_id)
+        format("arn:aws:rds-db:%s:*:dbuser:*/*", data.aws_region.current.name)
       ]
     }
   }
